@@ -13,7 +13,7 @@ public class NumberUtils {
     
     // Calcula a média dos números da lista indicada
     public static double calcularMedia(List<Double> numeros) {
-        if (numeros.isEmpty()){
+        if (numeros.isEmpty()){ // Se a lista de numeros for vazia devolve 0
             return 0;
         } 
         else {
@@ -30,14 +30,14 @@ public class NumberUtils {
     public static double calcularMediana(List<Double> numeros) {
         int tamanho = numeros.size();
         
-        if (tamanho == 0) {
+        if (tamanho == 0) { // Se a lista de numeros for vazia devolve 0
             return 0;
         }  
         else {
-            Collections.sort(numeros);  // Ordena a lista para calcular a mediana.
-            if (tamanho % 2 == 1) {
+            Collections.sort(numeros);  // Ordena a lista para saber o valor do meio da lista
+            if (tamanho % 2 == 1) { 
                 return numeros.get(tamanho / 2);
-            } else {
+            } else { // Se a lista for par calcula a média os dois numeros do meio da lista
                 return (numeros.get(tamanho / 2 - 1) + numeros.get(tamanho / 2)) / 2.0;
             }
         }
@@ -45,21 +45,21 @@ public class NumberUtils {
 
     // Calcula a moda dos números da lista indicada
     public static double calcularModa(List<Double> numeros) {
-        if (numeros.isEmpty()) {
-            return 0;
+        if (numeros.isEmpty()) {  // Se a lista de numeros for vazia devolve 0
+            return 0; 
         }  
         else {
             Map<Double, Integer> frequencia = new HashMap<>();
             for (Double num : numeros) {
-                frequencia.put(num, frequencia.getOrDefault(num, 0) + 1);
+                frequencia.put(num, frequencia.getOrDefault(num, 0) + 1); // Conta a frequencia de cada numero, incrementado o valor sempre que seja igual
             }
             
             double moda = 0;
             int maxFreq = 0;
             
             for (Map.Entry<Double, Integer> entry : frequencia.entrySet()) {
-                if (entry.getValue() > maxFreq) {
-                    maxFreq = entry.getValue();
+                if (entry.getValue() > maxFreq) { // vai atualizado conforme a maior frequencia encontrada
+                    maxFreq = entry.getValue(); 
                     moda = entry.getKey();
                 }
             }
